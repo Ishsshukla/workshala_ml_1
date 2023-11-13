@@ -6,10 +6,10 @@ from data_loader import load_dataframe
 
 app = FastAPI()
 
-# Load your DataFrame
+#  DataFrame
 df = load_dataframe()
 
-# Create similarity matrix
+# similarity matrix
 similarity_matrix = create_similarity_matrix(df)
 
 @app.get("/recommend/{keyword}")
@@ -19,8 +19,7 @@ async def get_recommendations(keyword: str):
         if not matching_courses:
             return {"message": f"No matching courses found for {keyword}"}
 
-        # Implement the recommend_courses function based on similarity_matrix
-        # ...
+       
 
         recommended_courses = recommend_courses(keyword, similarity_matrix, df, top_n=5)
         return {"message": f"Recommendations for {keyword}", "courses": recommended_courses}
